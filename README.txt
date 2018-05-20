@@ -1,3 +1,4 @@
+	ATTANTION: PROJECT NOT COMPLETED!
 	DKDNS - special dns proxy server with blacklist.
 
 	To compile dkdns, you need: gcc, libconfig (http://hyperrealm.com/oss_libconfig.shtml).
@@ -9,7 +10,7 @@
 	to your path, again use make to recompile dkdns).
 
 	Log files write in /var/log/dkdns.log (if you need to change path
-   open dkdns.h,find LOG_PATH and change "/var/log/dkdns.log" to your
+	open dkdns.h,find LOG_PATH and change "/var/log/dkdns.log" to your
 	path, then use make to recompile dkdns).
 
 	For start DKDNS, use command: sudo ./dkdns start.
