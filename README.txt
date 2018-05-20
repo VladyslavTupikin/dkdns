@@ -1,4 +1,4 @@
-	ATTANTION: PROJECT NOT COMPLETED!
+	ATTENTION: PROJECT NOT COMPLETED!
 	DKDNS - special dns proxy server with blacklist.
 
 	To compile dkdns, you need: gcc, libconfig (http://hyperrealm.com/oss_libconfig.shtml).
