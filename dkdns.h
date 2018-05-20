@@ -26,7 +26,6 @@
 #include "cfgstruct.h"
 //-----------------------------------------------------------
 #define DNS_GOOG "8.8.8.8"
-#define LOCAL_NET "192.168.0.111"//"127.0.0.1"//
 #define PORT 53
 #define T_A 1
 #define DGRAM_MX_SZE 65535
