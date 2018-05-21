@@ -8,7 +8,7 @@
 //-----------------------
 #include "list.h"
 //-----------------------
-#define CFG_PATH "/home/dk/test-c/dkdns/dkdns.cfg"
+#define CFG_PATH "/etc/dkdns/dkdns.cfg"
 typedef struct dkdnscfg
 {
     char* Local_IPv4;
