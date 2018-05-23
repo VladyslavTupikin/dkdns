@@ -122,12 +122,13 @@ int main(int argc, char** argv)
 				writelog("[DKDNS]: execl: ", strerror(errno));
 				return -1;
 			}
+			else
+			{
+				printf("Usage: dkdns command(commands: start,stop,restart)\n");
+				return -1;
+			}
 		}
-		else
-		{
-			printf("Usage: dkdns command(commands: start,stop,restart)\n");
-			return -1;
-		}				
+				
 	}
 
 	return 0;
