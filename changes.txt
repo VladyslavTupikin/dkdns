@@ -1,0 +1,14 @@
+|-----------------------------------------------------------------------|
+|***************** 23.05.18 ********************************************|
+|-----------------------------------------------------------------------|
+    Deleted:
+        - useless defined constants 
+
+    Added:
+        - checking when user trying to start server twice or more
+
+    Tested:
+        - correct work start/stop/restart keys
+
+    Fixed:
+        -printing "usage" message   

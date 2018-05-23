@@ -25,7 +25,18 @@ int main(int argc, char** argv)
 			else if (!pid)
 			{
 				FILE* fd;
+				FILE* fd2;
+				fd2 = fopen(PID_PATH,"r");
+				if(fd2)
+				{
+					printf("[DKDNS]: Server works.Abort.\n");
+					writelog("[DKDNS]:","Server works.Abort.");
+					exit(0);
+				}
 				
+				errno = 0;
+				
+
 				writelog("[DKDNS]: Started: ", strerror(errno));
 				fd = fopen(PID_PATH, "w+");
 				if(!fd)
@@ -45,10 +56,11 @@ int main(int argc, char** argv)
 		}
 		else if(strcmp(argv[1],"stop")==0)
 		{
-			FILE* fd = fopen(PID_PATH, "r+");
+			FILE* fd = fopen(PID_PATH, "r");
 			if(!fd)
 			{
 				writelog("[DKDNS]: fopen pid: ", strerror(errno));
+				return -1;
 			}
 			fscanf(fd,"%d", &pid);
 			fclose(fd);
@@ -56,9 +68,18 @@ int main(int argc, char** argv)
 			if(kill(pid,SIGKILL) < 0)
 			{
 				writelog("[DKDNS]: kill: ", strerror(errno));
+				
+				if(unlink(PID_PATH) < 0)
+				{	
+					writelog("[DKDNS]: unlink: ", strerror(errno));
+				}
+
 				return -1;	
 			}
-
+			if(unlink(PID_PATH) < 0)
+			{	
+				writelog("[DKDNS]: unlink: ", strerror(errno));
+			}
 			writelog("[DKDNS]: Stopped: ", strerror(errno));
 		}
 		else if(strcmp(argv[1],"restart")==0)
@@ -72,34 +93,45 @@ int main(int argc, char** argv)
 			}
 
 			fscanf(fd,"%d", &pid);
-			fclose(fd);
+			fclose(fd);	
 
 			if(kill(pid,SIGKILL) < 0)
 			{
 				writelog("[DKDNS]: kill: ", strerror(errno));
-				return -1;	
-			}
+								
+				if(unlink(PID_PATH) < 0)
+				{	
+					writelog("[DKDNS]: unlink: ", strerror(errno));
+				}
 
+				return -1;		
+			}
+			if(unlink(PID_PATH) < 0)
+			{	
+				writelog("[DKDNS]: unlink: ", strerror(errno));
+			}
 			char* path = getcwd(buf,sizeof(buf));
 			if(!path)
 			{
 				writelog("[DKDNS]: getcwd: ", strerror(errno));
 			}
-			writelog("[DKDNS]: Restart...: ", strerror(errno));
+			writelog("[DKDNS]: Restart... ","");
 			int ret = execl(strcat(path,START),"dkdns","start",(char*)NULL);
 			if(ret < 0)
 			{
 				writelog("[DKDNS]: execl: ", strerror(errno));
 				return -1;
 			}
-		}		
-			
+		}
+		else
+		{
+			printf("Usage: dkdns command(commands: start,stop,restart)\n");
+			return -1;
+		}				
 	}
-	else
-	{
-		printf("Usage: dkdns command(commands: start,stop,restart)\n");
-		return -1;
-	}
+
+
+
 
 	return 0;
 }

@@ -25,8 +25,6 @@
 //-----------------------------------------------------------
 #include "cfgstruct.h"
 //-----------------------------------------------------------
-#define DNS_GOOG "8.8.8.8"
-#define PORT 53
 #define T_A 1
 #define DGRAM_MX_SZE 65535
 #define LOG_PATH "/var/log/dkdns.log"

@@ -28,7 +28,7 @@ DKconf* loadcfg(void)
                     config_error_line(&cfg), config_error_text(&cfg));
        return NULL;
     }  
-
+    
     if(!config_lookup_string(&cfg, "Local_IPv4", &str))
     {
         fprintf(stderr, "No 'Local_IPv4' setting in configuration file.");

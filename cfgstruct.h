@@ -8,16 +8,18 @@
 //-----------------------
 #include "list.h"
 //-----------------------
-#define CFG_PATH "/home/dk/test-c/dkdns/dkdns.cfg"
+#define CFG_PATH "/etc/dkdns/dkdns.cfg"
 typedef struct dkdnscfg
 {
     char* Local_IPv4;
-    int Local_Port;
     char* Main_IPv4;
+    char* answer;
+    
+    int Local_Port;
     int Main_Port;
     int msg;
-    char* answer;
     int wtime;
+
     List* blck_name_lst; 
     List* blck_ip_lst; 
 }DKconf;
