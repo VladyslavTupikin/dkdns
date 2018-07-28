@@ -20,6 +20,6 @@
 	If you changed some params in dkdns.cfg, just restart dkdns.
 
 	DKDNS passed tests on Linux Mint 18.2.
-	uname -a: Linux dk-pc 4.4.0-53-generic #74-Ubuntu SMP Fri Dec 2 15:59:10 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+
 
 	
