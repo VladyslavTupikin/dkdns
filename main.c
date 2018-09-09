@@ -11,8 +11,13 @@ int main(int argc, char** argv)
 {
 
 	int pid,status;
-
-	if(argc >= 2)
+/*
+//debug
+	printf("%d\n", argc);
+	exit(1);
+//debug_end
+*/
+	if(argc == 2)
 	{
 		if(strcmp(argv[1],"start")==0)
 		{
@@ -129,7 +134,11 @@ int main(int argc, char** argv)
 			return -1;
 		}				
 	}
-
+	else
+	{
+		printf("Usage: dkdns command(commands: start,stop,restart)\n");
+		return -1;
+	}
 	return 0;
 }
 /*

@@ -32,7 +32,7 @@
 //-----------------------------------------------------------
 int blck_lst(unsigned char* name,List* root);
 int server(void);
-void writelog(char* Msg, char* err);
+void writelog(char* Msg,char* err);
 void writelog_blst_name(char* Msg, char* err,char* addr);
 void writelog_blst_ip(char* Msg,char* addr);
 int blck_ip(unsigned char* ip,List* root);
@@ -51,7 +51,7 @@ struct DNS_HEADER
     unsigned char rcode :4; // response code
     unsigned char cd :1; // checking disabled
     unsigned char ad :1; // authenticated data
-    unsigned char z :1; // its z! reserved
+    unsigned char z :1; // reserved
     unsigned char ra :1; // recursion available
  
     unsigned short q_count; // number of question entries

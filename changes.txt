@@ -1,4 +1,23 @@
 |-----------------------------------------------------------------------|
+|***************** 09.09.18 ********************************************|
+|-----------------------------------------------------------------------|
+    Added:
+        - size param:
+          -- list.c : add(), init()
+        - new macro
+          -- loadconf.c : SIZE_IPv4, SIZE_ANSWER
+
+    Tested:
+        - correct work blacklist functons
+        - correct print "usage" message
+
+    Fixed:
+        - wrong sizes in malloc:
+          -- loadconf.c
+          -- list.c
+        - print "usage" message      
+
+|-----------------------------------------------------------------------|
 |***************** 23.05.18 ********************************************|
 |-----------------------------------------------------------------------|
     Deleted:
@@ -8,7 +27,4 @@
         - checking when user trying to start server twice or more
 
     Tested:
-        - correct work start/stop/restart keys
-
-    Fixed:
-        -printing "usage" message   
+        - correct work start/stop/restart keys 

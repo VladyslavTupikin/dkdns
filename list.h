@@ -5,6 +5,7 @@
 #include <string.h>
 
 #define FAILURE -1
+
 typedef struct Lists
 {
 	struct Lists *nextPtr;
@@ -12,6 +13,6 @@ typedef struct Lists
 	
 }List;
 
-List *init(char *data);
-List *add(List *prev,char* data);
+List *init(char *data, size_t data_size);
+List *add(List *prev,char* data, size_t data_size);
 #endif
