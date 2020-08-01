@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-std=c99 -D_DEFAULT_SOURCE
+CFLAGS=-std=c11 -D_DEFAULT_SOURCE
 DEPS=dkdns.h list.h cfgstruct.h
 OBJ=main.o server.o loadconf.o list.o
 AIM=dkdns
