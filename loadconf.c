@@ -12,28 +12,28 @@
 */
 DKconf* loadcfg(void)
 {
-	config_t cfg;
-	config_setting_t *setting;
-	const char *str;
+    config_t cfg;
+    config_setting_t *setting;
+    const char *str;
     const char* tmpstr;
     DKconf *confdk;
     List* tmp;
-   
+
     confdk = malloc(sizeof(DKconf));
     if(!confdk)
     {
         perror("malloc: ");
         return NULL;
     }
-	config_init(&cfg);
-    
+    config_init(&cfg);
+
     if(!config_read_file(&cfg, CFG_PATH))
     {
         fprintf(stderr, "%s:%d - %s\n", config_error_file(&cfg),
                     config_error_line(&cfg), config_error_text(&cfg));
        return NULL;
-    }  
-    
+    }
+
     if(!config_lookup_string(&cfg, "Local_IPv4", &str))
     {
         fprintf(stderr, "No 'Local_IPv4' setting in configuration file.");
@@ -82,52 +82,50 @@ DKconf* loadcfg(void)
     confdk->answer = malloc(SIZE_ANSWER);
     strcpy(confdk->answer,str);
 
-	setting = config_lookup(&cfg,"blacklist_domain");
-	
-	if(setting)
-	{
-		unsigned int size = config_setting_length(setting);
-		
-		for(int i = 0;i < size;i++)
-		{
-			if(i==0)
+    setting = config_lookup(&cfg,"blacklist_domain");
+
+    if(setting)
+    {
+        unsigned int size = config_setting_length(setting);
+
+        for(int i = 0;i < size;i++)
+        {
+            if(i==0)
             {
                 tmpstr = config_setting_get_string_elem(setting,i);
                 confdk->blck_name_lst = init((char*)tmpstr,strlen(tmpstr) + 1);
-                tmp = confdk->blck_name_lst;    
+                tmp = confdk->blck_name_lst;
             }
             else
             {
                 tmpstr = config_setting_get_string_elem(setting,i);
                 tmp = add(tmp,(char*)tmpstr, strlen(tmpstr) + 1);
             }
-			    
-		}
-	}
+        }
+    }
 
- 	setting = config_lookup(&cfg, "blacklist_ip");
-	
-	if(setting)
-	{
-		unsigned int size = config_setting_length(setting);
-		
-		for(int i = 0;i < size;i++)
-		{
-			if(i==0)
+    setting = config_lookup(&cfg, "blacklist_ip");
+
+    if(setting)
+    {
+        unsigned int size = config_setting_length(setting);
+
+        for(int i = 0;i < size;i++)
+        {
+            if(i==0)
             {
                 tmpstr = config_setting_get_string_elem(setting, i);
                 confdk->blck_ip_lst = init((char*)tmpstr, strlen(tmpstr) + 1);
-                tmp = confdk->blck_ip_lst;    
+                tmp = confdk->blck_ip_lst;
             }
             else
             {
                 tmpstr = config_setting_get_string_elem(setting, i);
                 tmp = add(tmp, (char*)tmpstr, strlen(tmpstr) + 1);
             }
-			    
-		}
-	}
-              
+        }
+    }
+
     config_destroy(&cfg);
-    return confdk; 
+    return confdk;
 }

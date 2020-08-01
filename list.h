@@ -8,9 +8,9 @@
 
 typedef struct Lists
 {
-	struct Lists *nextPtr;
-	char *dataPtr;
-	
+    struct Lists *nextPtr;
+    char *dataPtr;
+
 }List;
 
 List *init(char *data, size_t data_size);
