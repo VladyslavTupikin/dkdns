@@ -24,7 +24,7 @@
 #include <signal.h>
 #include <time.h>
 //-----------------------------------------------------------
-#include "cfgstruct.h"
+#include "loadconf.h"
 //-----------------------------------------------------------
 #define T_A 1
 #define DGRAM_MX_SZE 65535

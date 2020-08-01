@@ -1,9 +1,6 @@
 //-----------------------
-#include "cfgstruct.h"
+#include "loadconf.h"
 #include "list.h"
-//-----------------------
-#define SIZE_IPv4 4
-#define SIZE_ANSWER 20
 //-----------------------
 
 /*
@@ -39,8 +36,8 @@ DKconf* loadcfg(void)
         fprintf(stderr, "No 'Local_IPv4' setting in configuration file.");
         return NULL;
     }
-    confdk->Local_IPv4 = malloc(SIZE_IPv4);
-    strcpy(confdk->Local_IPv4,str);
+
+    strcpy(confdk->Local_IPv4, str);
 
     if(!config_lookup_int(&cfg, "Local_Port", &confdk->Local_Port))
     {
@@ -53,8 +50,8 @@ DKconf* loadcfg(void)
         fprintf(stderr, "No 'Main_IPv4' setting in configuration file.");
         return NULL;
     }
-    confdk->Main_IPv4 = malloc(SIZE_IPv4);
-    strcpy(confdk->Main_IPv4,str);
+
+    strcpy(confdk->Main_IPv4, str);
 
     if(!config_lookup_int(&cfg, "Main_Port", &confdk->Main_Port))
     {
@@ -73,14 +70,6 @@ DKconf* loadcfg(void)
         fprintf(stderr, "No 'wtime' setting in configuration file.");
         return NULL;
     }
-
-    if(!config_lookup_string(&cfg, "answer", &str))
-    {
-        fprintf(stderr, "No 'answer' setting in configuration file.");
-        return NULL;
-    }
-    confdk->answer = malloc(SIZE_ANSWER);
-    strcpy(confdk->answer,str);
 
     setting = config_lookup(&cfg,"blacklist_domain");
 

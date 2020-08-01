@@ -8,20 +8,26 @@
 //-----------------------
 #include "list.h"
 //-----------------------
-#define CFG_PATH "/etc/dkdns/dkdns.cfg"
+#define SIZE_IPv4 4
+#define SIZE_ANSWER 20
+//-----------------------
+
+#ifndef CFG_PATH
+    #define CFG_PATH "/etc/dkdns/dkdns.cfg"
+#endif
+
 typedef struct dkdnscfg
 {
-    char* Local_IPv4;
-    char* Main_IPv4;
-    char* answer;
-    
+    char Local_IPv4[SIZE_IPv4];
+    char Main_IPv4[SIZE_IPv4];
+
     int Local_Port;
     int Main_Port;
     int msg;
     int wtime;
 
-    List* blck_name_lst; 
-    List* blck_ip_lst; 
+    List* blck_name_lst;
+    List* blck_ip_lst;
 }DKconf;
 //-----------------------
 DKconf* loadcfg(void);
