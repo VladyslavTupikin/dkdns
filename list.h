@@ -5,14 +5,15 @@
 #include <string.h>
 
 #define FAILURE -1
+#define LIST_DATA_SIZE 2048
 
 typedef struct Lists
 {
     struct Lists *nextPtr;
-    char *dataPtr;
+    char dataPtr[LIST_DATA_SIZE];
 
 }List;
 
-List *init(char *data, size_t data_size);
-List *add(List *prev,char* data, size_t data_size);
+List *init(char *data);
+List *add(List *prev,char* data);
 #endif

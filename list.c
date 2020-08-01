@@ -1,6 +1,6 @@
 #include "list.h"
 
-List *init(char *data, size_t data_size)
+List *init(char *data)
 {
     List *lst;
     lst = malloc(sizeof(List));
@@ -11,20 +11,12 @@ List *init(char *data, size_t data_size)
         exit(FAILURE);
     }
 
-    lst->dataPtr = malloc(data_size);
-
-    if(!lst->dataPtr)
-    {
-        fprintf(stderr,"ERR: memory not allocated: lst_dataPtr_init\n");
-        exit(FAILURE);
-    }
-
     strcpy(lst->dataPtr,data);
     lst->nextPtr = NULL;
     return lst;
 }
 
-List *add(List *lst, char* data, size_t data_size)
+List *add(List *lst, char* data)
 {
     List *tmp, *saved;
     tmp = malloc(sizeof(List));
@@ -35,13 +27,6 @@ List *add(List *lst, char* data, size_t data_size)
     }
     saved =(List*)lst->nextPtr;
     lst->nextPtr = tmp;
-    tmp->dataPtr = malloc(data_size);
-
-    if(!tmp->dataPtr)
-    {
-        fprintf(stderr,"ERR: memory not allocated: lst->data_add\n");
-        exit(FAILURE);
-    }
 
     strcpy(tmp->dataPtr,data);
     tmp->nextPtr = saved;
