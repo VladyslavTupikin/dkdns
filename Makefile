@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-std=c99 -D _POSIX_C_SOURCE -D__BSD_SOURCE -D_SVID_SOURCE
+CFLAGS=-std=c99 -D_DEFAULT_SOURCE
 DEPS=dkdns.h list.h cfgstruct.h
-OBJ=main.o server.o loadconf.o list.o 
+OBJ=main.o server.o loadconf.o list.o
 AIM=dkdns
 OPT=-O3
 LIBS=-lconfig
@@ -11,8 +11,7 @@ LIBS=-lconfig
 
 dknds: $(OBJ)
 	$(CC) -g -o $(AIM) $(OBJ) $(CFLAGS) $(LIBS) $(OPT)
-	make clean
 clean:
 	rm -f $(OBJ)
 clean_all:
-	rm -r $(OBJ) $(AIM)	
+	rm -r $(OBJ) $(AIM)
