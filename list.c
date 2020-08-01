@@ -33,6 +33,30 @@ List *add(List *lst, char* data)
     return tmp;
 }
 
+int erase(List** head)
+{
+    if (!head)
+    {
+        fprintf(stderr,"ERR: head does not exist\n");
+        return -1;
+    }
+
+    List* head_tmp = *head;
+    List* next = head_tmp->nextPtr;
+
+    while(next != NULL)
+    {
+        List* current = next;
+        next = next->nextPtr;
+        free(current);
+        current = NULL;
+    }
+
+    free(*head);
+    *head = NULL;
+    return 0;
+}
+
 
 
 

@@ -16,4 +16,6 @@ typedef struct Lists
 
 List *init(char *data);
 List *add(List *prev,char* data);
+int erase(List** head);
+
 #endif
